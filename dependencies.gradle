@@ -1,0 +1,11 @@
+ext.libraries = [
+      starterTest: 'org.springframework.boot:spring-boot-starter-test',
+      springWeb  : 'org.springframework.boot:spring-boot-starter-web',
+      lombok : 'org.projectlombok:lombok',
+      postgres : 'org.postgresql:postgresql',
+      springJpa : 'org.springframework.boot:spring-boot-starter-data-jpa',
+      resourceServer : 'org.springframework.boot:spring-boot-starter-oauth2-resource-server',
+      keycloak: 'org.keycloak:keycloak-spring-boot-starter:21.0.1',
+      keycloakAdmin: 'org.keycloak:keycloak-admin-client:21.0.1',
+      webMvc: 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0',
+]

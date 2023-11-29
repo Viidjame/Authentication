@@ -1,0 +1,28 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9089/auth/realms/Authentication
+          jwk-set-uri: http://localhost:9089/auth/realms/Authentication/protocol/openid-connect/certs
+
+keycloak:
+  realm: Authentication
+  resource: User
+  auth-server-url: http://localhost:9089/auth
+  credentials:
+    username : admin
+    password : admin
+    client-id: User
+    secret: 'lMN1nZ0I7sV4yj0kOGRo184zEG5IICjw'
+    provider: secret
+
+
+logging:
+  level:
+    org.springframework.web: debug
+
+
+
+server:
+  port: 8081

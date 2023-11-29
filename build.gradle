@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.4'
+    id 'io.spring.dependency-management' version '1.1.3'
+}
+
+
+
+project('authentication-service'){
+
+    // Import overall plugins from plugin.gradle
+    apply from: "$rootProject.projectDir/plugin.gradle"
+
+    apply plugin : tool.java
+    apply plugin: tool.springboot
+    apply plugin : tool.dependencies
+
+
+    // Import overall dependencies from dependencies.gradle
+    apply from: "$rootProject.projectDir/dependencies.gradle"
+
+    group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+
+    java {
+        sourceCompatibility = '17'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation libraries.resourceServer
+        implementation libraries.keycloak
+        implementation libraries.keycloakAdmin
+        implementation libraries.webMvc
+    }
+}
+
+allprojects {
+
+    // Apply external plugin
+    apply from: "$rootProject.projectDir/plugin.gradle"
+
+    apply plugin: tool.java
+    apply plugin: tool.springboot
+    apply plugin: tool.dependencies
+
+    // Apply external dependencies
+    apply from: "$rootProject.projectDir/dependencies.gradle"
+
+    group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+
+    java {
+        sourceCompatibility = '17'
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+}

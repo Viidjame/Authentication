@@ -1,0 +1,3 @@
+rootProject.name = 'KeyCloakAuthentication'
+include 'authentication-service'
+
